@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Header from './Header';
 import Game from './Game';
 import Options from './Options';
@@ -14,7 +14,7 @@ function App() {
   const [lives, setLives] = useState(3)
   const [disableSelected, setDisableSelected] = useState()
   const [hidden, setHidden] = useState('hidden')
-  const [lostGame, setLostGame] = useState()
+  // const [lostGame, setLostGame] = useState()
 
   const boardDiv = document.getElementById('board')
   const numContainer = document.getElementById('number-container')
@@ -55,7 +55,7 @@ function App() {
     let idCount = 0
     for (let i = 0; i < 81; i++) {
         let tile = document.createElement('p')
-        if (difficulty.puzzle.charAt(i) != "-") {
+        if (difficulty.puzzle.charAt(i) !== "-") {
             tile.textContent = difficulty.puzzle.charAt(i)
         } else {
             tile.addEventListener('click', () => {
@@ -80,7 +80,7 @@ function App() {
         if ((tile.id > 17 && tile.id < 27) || (tile.id > 44 && tile.id < 54)) {
             tile.classList.add('bottomBorder')
         }
-        if ((tile.id + 1) % 9 == 3 || (tile.id + 1) % 9 == 6) {
+        if ((tile.id + 1) % 9 === 3 || (tile.id + 1) % 9 === 6) {
             tile.classList.add('rightBorder')
         }
         boardDiv.appendChild(tile)
@@ -133,8 +133,8 @@ function App() {
 
   function clearPreviousBoard() {
     let tiles = document.querySelectorAll('.tile')
-    let selectedNum
-    let selectedTile
+    // let selectedNum
+    // let selectedTile
 
     for (let i = 0; i < tiles.length; i ++ ) {
         tiles[i].remove()
@@ -144,13 +144,13 @@ function App() {
         numContainer.children[i].classList.remove('selected')
     }
 
-    selectedNum = null
-    selectedTile = null
+    // selectedNum = null
+    // selectedTile = null
   }
 
-  useEffect(() => {
-    lostGame === true ? clearPreviousBoard() : setLives(lives)
-  }, [lostGame])
+  // useEffect(() => {
+  //   lostGame === true ? clearPreviousBoard() : setLives(lives)
+  // }, [lostGame])
   
 
 
@@ -166,7 +166,7 @@ function App() {
     }
     let newSavedGameArray = [...savedGameArray]
     for (let i = 0; i < 81; i++) {
-      if (newSavedGameArray[i] == '') {
+      if (newSavedGameArray[i] === '') {
         newSavedGameArray[i] = '-'
       }
     }
@@ -194,7 +194,7 @@ function App() {
       <Header/>
       <Options setDifficulty={setDifficulty}/>
       <Buttons setLives={setLives} extractSaveBoard={extractSaveBoard} clearPreviousBoard={clearPreviousBoard} generateBoard={generateBoard} theme={theme} setTheme={setTheme} setHidden={setHidden} selectNum={selectNum}/>
-      <Stats lives={lives} setLives={setLives} disableSelected={disableSelected} setLostGame={setLostGame}/>
+      <Stats lives={lives} setLives={setLives} disableSelected={disableSelected} clearPreviousBoard={clearPreviousBoard}/>
       <Game generateBoard={generateBoard} difficulty={difficulty} hidden={hidden}/>
     </div>
   )

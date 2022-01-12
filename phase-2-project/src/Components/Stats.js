@@ -1,17 +1,15 @@
-import { useEffect } from 'react'
+import {useEffect} from 'react'
 import './App.css'
 
-function Stats({lives, setLives, disableSelected, setLostGame}) {
+function Stats({lives, setLives, disableSelected, clearPreviousBoard}) {
 
     useEffect(() => {
         disableSelected ? setLives(lives - 1) : setLives(lives)
     }, [disableSelected])
 
     useEffect(() => {
-        if (lives === 0) setLostGame(true)
+        if (lives === 0) clearPreviousBoard()
     })
-
-
 
     return (
         <div id="stats">

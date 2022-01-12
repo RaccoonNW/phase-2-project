@@ -4,12 +4,12 @@ function Options({setDifficulty}) {
 
     function handleSetDifficulty() {
         const element = document.getElementById('difficulty-select')
-        if (element.value == 'easy') {
+        if (element.value === 'easy') {
             fetch('http://localhost:3001/puzzles')
                 .then((r) => r.json())
                 .then((puzzles) => setDifficulty(puzzles[0]))
         }
-        else if (element.value == 'medium') {
+        else if (element.value === 'medium') {
             fetch('http://localhost:3001/puzzles')
                 .then((r) => r.json())
                 .then((puzzles) => setDifficulty(puzzles[1]))
