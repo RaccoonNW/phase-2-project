@@ -14,7 +14,6 @@ function App() {
   const [lives, setLives] = useState(3)
   const [disableSelected, setDisableSelected] = useState()
   const [hidden, setHidden] = useState('hidden')
-  const [solution, setSolution] = useState()
   const [lostGame, setLostGame] = useState()
 
   const boardDiv = document.getElementById('board')
@@ -193,7 +192,7 @@ function App() {
   return (
     <div>
       <Header/>
-      <Options setDifficulty={setDifficulty} setSolution={setSolution}/>
+      <Options setDifficulty={setDifficulty}/>
       <Buttons setLives={setLives} extractSaveBoard={extractSaveBoard} clearPreviousBoard={clearPreviousBoard} generateBoard={generateBoard} theme={theme} setTheme={setTheme} setHidden={setHidden} selectNum={selectNum}/>
       <Stats lives={lives} setLives={setLives} disableSelected={disableSelected} setLostGame={setLostGame}/>
       <Game generateBoard={generateBoard} difficulty={difficulty} hidden={hidden}/>

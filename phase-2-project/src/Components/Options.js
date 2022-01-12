@@ -1,6 +1,6 @@
 import './App.css'
 
-function Options({setDifficulty, setSolution}) {
+function Options({setDifficulty}) {
 
     function handleSetDifficulty() {
         const element = document.getElementById('difficulty-select')
