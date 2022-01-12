@@ -1,22 +1,43 @@
 import './App.css'
+import React, {useState} from 'react'
 import Board from './Board'
+import NumElement from './NumElement'
 
 function Game({generateBoard, hidden}) {
+
+    const [selected, setSelected] = useState(null)
+
+
+    const numArray = [
+        'one', 
+         'two', 
+         'three', 
+        'four',
+         'five', 
+         'six', 
+         'seven',
+         'eight',
+         'nine',
+    ]
+        
 
 
     return (
         <div id="game">
             <Board generateBoard={generateBoard}/>
             <div id="number-container" className={hidden}>
-                <p id="one">1</p>
-                <p id="two">2</p>
-                <p id="three">3</p>
-                <p id="four">4</p>
-                <p id="five">5</p>
-                <p id="six">6</p>
-                <p id="seven">7</p>
-                <p id="eight">8</p>
-                <p id="nine">9</p>
+                {numArray.map((num, numId) => {
+                    
+                    return (
+                        <NumElement
+                            setSelected={setSelected}
+                            selected={selected}
+                            id={num}
+                            key={numId}
+                            number={numId + 1}
+                        />
+                    )
+                })}
             </div>
         </div>
     )

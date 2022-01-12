@@ -1,24 +1,22 @@
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function Options({setDifficulty}) {
 
-    function handleSetDifficulty() {
-        const element = document.getElementById('difficulty-select')
-        if (element.value === 'easy') {
+    const [mode, setMode] = useState(null)
+
+    useEffect(() => {
+        if (mode) {
+    
             fetch('http://localhost:3001/puzzles')
                 .then((r) => r.json())
-                .then((puzzles) => setDifficulty(puzzles[0]))
+                .then((puzzles) => setDifficulty(puzzles[mode]))
         }
-        else if (element.value === 'medium') {
-            fetch('http://localhost:3001/puzzles')
-                .then((r) => r.json())
-                .then((puzzles) => setDifficulty(puzzles[1]))
-        }
-        else {
-            fetch('http://localhost:3001/puzzles')
-                .then((r) => r.json())
-                .then((puzzles) => setDifficulty(puzzles[2]))
-        }
+    }, [mode])
+
+    function handleSetDifficulty(event) {
+        setMode(event.target.value)
+
     }
     
         
@@ -29,9 +27,9 @@ function Options({setDifficulty}) {
                 <h3>Choose Difficulty:</h3>
                 <select name='difficulty' id='difficulty-select' onChange={handleSetDifficulty}>  
                     <option value=''>Select Difficulty</option>
-                    <option id='diff-1' value='easy'>Easy</option>
-                    <option id='diff-2' value='medium'>Medium</option>
-                    <option id='diff-3' value='hard'>Hard</option>
+                    <option id='diff-1' value={0}>Easy</option>
+                    <option id='diff-2' value={1}>Medium</option>
+                    <option id='diff-3' value={2}>Hard</option>
                 </select>
             </div>
         </div>

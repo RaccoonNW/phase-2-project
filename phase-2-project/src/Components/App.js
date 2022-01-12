@@ -26,25 +26,26 @@ function App() {
   let savedGameString
   
 
-  function selectNum() {
-    for (let i = 0; i < numContainer.children.length; i++) {
-      numContainer.children[i].addEventListener('click', () => {
-        if (!disableSelect) {
-          if (numContainer.children[i].classList.contains('selected')) {
-            numContainer.children[i].classList.remove('selected')
-            selectedNumber = null
-          } else {
-            for (let i = 0; i < 9; i++) {
-              numContainer.children[i].classList.remove('selected')
-            }
-            numContainer.children[i].classList.add('selected')
-            selectedNumber = numContainer.children[i]
-            updateMove()
-          }
-        }
-      })
-    }
-  }
+  // function selectNum() {
+  //   for (let i = 0; i < numContainer.children.length; i++) {
+  //     numContainer.children[i].addEventListener('click', () => {
+  //       if (!disableSelect) {
+  //         if (numContainer.children[i].classList.contains('selected')) {
+  //           numContainer.children[i].classList.remove('selected')
+  //           selectedNumber = null
+  //         } else {
+  //           for (let i = 0; i < 9; i++) {
+  //             numContainer.children[i].classList.remove('selected')
+  //           }
+  //           numContainer.children[i].classList.add('selected')
+  //           selectedNumber = numContainer.children[i]
+  //           updateMove()
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
+
 
 
 
@@ -101,8 +102,6 @@ function App() {
         selectedTile.classList.add('incorrect')
         selectedTile.classList.remove('selected')
         selectedNumber.classList.remove('selected')
-        // selectedNumber = null
-        // selectedTile = null
         setTimeout(() => {
           if (selectedTile.classList.contains('incorrect')) {
           selectedTile.classList.remove('incorrect')
@@ -124,8 +123,6 @@ function App() {
 
 
 
-
-
   function checkCorrect(tile) {
     if (difficulty.solution.charAt(tile.id) === tile.textContent) return true
     else return false
@@ -133,9 +130,6 @@ function App() {
 
   function clearPreviousBoard() {
     let tiles = document.querySelectorAll('.tile')
-    // let selectedNum
-    // let selectedTile
-
     for (let i = 0; i < tiles.length; i ++ ) {
         tiles[i].remove()
     }
@@ -143,14 +137,8 @@ function App() {
     for (let i = 0; i < numContainer.children.length; i++) {
         numContainer.children[i].classList.remove('selected')
     }
-
-    // selectedNum = null
-    // selectedTile = null
+    
   }
-
-  // useEffect(() => {
-  //   lostGame === true ? clearPreviousBoard() : setLives(lives)
-  // }, [lostGame])
   
 
 
@@ -179,7 +167,7 @@ function App() {
       lives: lives
     }
     setTimeout(() => {
-      fetch('http://localhost:3001/puzzles', {
+      fetch('http://localhost:3001/saves', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,9 +181,28 @@ function App() {
     <div>
       <Header/>
       <Options setDifficulty={setDifficulty}/>
-      <Buttons setLives={setLives} extractSaveBoard={extractSaveBoard} clearPreviousBoard={clearPreviousBoard} generateBoard={generateBoard} theme={theme} setTheme={setTheme} setHidden={setHidden} selectNum={selectNum}/>
-      <Stats lives={lives} setLives={setLives} disableSelected={disableSelected} clearPreviousBoard={clearPreviousBoard}/>
-      <Game generateBoard={generateBoard} difficulty={difficulty} hidden={hidden}/>
+      <Buttons
+        disableSelect={disableSelect}
+        setLives={setLives} 
+        extractSaveBoard={extractSaveBoard} 
+        clearPreviousBoard={clearPreviousBoard} 
+        generateBoard={generateBoard} 
+        theme={theme} setTheme={setTheme} 
+        setHidden={setHidden} 
+        selectNum={selectNum}
+      />
+      <Stats 
+        lives={lives} 
+        setLives={setLives} 
+        disableSelected={disableSelected} 
+        clearPreviousBoard={clearPreviousBoard}
+      />
+      <Game 
+        generateBoard={generateBoard} 
+        difficulty={difficulty} 
+        hidden={hidden} 
+        theme={theme}
+      />
     </div>
   )
 

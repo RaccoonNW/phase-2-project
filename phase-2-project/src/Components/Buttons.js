@@ -1,16 +1,18 @@
 import './App.css'
 
-function Buttons({theme, setTheme, generateBoard, setHidden, selectNum, clearPreviousBoard, extractSaveBoard, setLives}) {
+function Buttons({theme, setTheme, generateBoard, setHidden, selectNum, clearPreviousBoard, extractSaveBoard, setLives, disableSelect}) {
 
     const buttonText = theme ? 'Light Mode' : 'Dark Mode'
     
     function toggleTheme() {
         theme === true ? setTheme(false) : setTheme(true)
         theme === true ? document.body.style = 'background: white' : document.body.style = 'background: black; color: white';
+
     }
 
     function startGame() {
         clearPreviousBoard()
+        setLives(3)
         generateBoard()
         setHidden()
         selectNum()

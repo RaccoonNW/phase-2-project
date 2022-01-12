@@ -10,28 +10,26 @@
 #header {
   display: flex;
   justify-content: center;
+  background-color: black;
+}
+
+h1 {
+  font-size: 40pt;
+  margin-bottom: 0;
+  color: ivory;
 }
 
 #subtitle {
   text-align: center;
   margin-top: 0;
+  color: ivory;
 }
 
 #setup-game {
   display: flex;
   justify-content: center;
   justify-self: center;
-  /* margin-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 80px; */
 }
-
-/* #setup-game > * {
-  margin-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
-
-} */
 
 #theme {
   display: flex;
@@ -43,12 +41,6 @@
 }
 
 #difficulty {
-  padding: 10px;
-  text-align: center;
-  padding-bottom: 10px;
-}
-
-#time {
   padding: 10px;
   text-align: center;
   padding-bottom: 10px;
@@ -69,12 +61,6 @@
   margin: 10px;
   margin-left: 30px;
   justify-self: center;
-}
-
-
-h1 {
-  font-size: 40pt;
-  margin-bottom: 0;
 }
 
 p#timer, p#lives {
@@ -137,4 +123,8 @@ p.incorrect {
 
 .bottomBorder {
   border-bottom: 4px solid black;
+}
+
+p.selected-state {
+  background-color: lightblue;
 }
