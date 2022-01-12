@@ -13,11 +13,9 @@ function App() {
   const [difficulty, setDifficulty] = useState()
   const [lives, setLives] = useState(3)
   const [disableSelected, setDisableSelected] = useState()
-  // const [disableSelectTile, setDisableSelectTile] = useState()
   const [hidden, setHidden] = useState('hidden')
   const [solution, setSolution] = useState()
   const [lostGame, setLostGame] = useState()
-  const [savedGame, setSavedGame] = useState("")
 
   const boardDiv = document.getElementById('board')
   const numContainer = document.getElementById('number-container')
@@ -174,8 +172,6 @@ function App() {
       }
     }
     savedGameString = newSavedGameArray.join("")
-    console.log(savedGameString)
-    setSavedGame(savedGameString)
     const gameData = {
       id: '',
       difficulty: difficulty.difficulty,
