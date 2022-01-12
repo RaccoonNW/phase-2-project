@@ -1,0 +1,140 @@
+.hidden {
+  display: none;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+#subtitle {
+  text-align: center;
+  margin-top: 0;
+}
+
+#setup-game {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  /* margin-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 80px; */
+}
+
+/* #setup-game > * {
+  margin-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+} */
+
+#theme {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid blue;
+  padding-left: 40px;
+}
+
+#difficulty {
+  padding: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#time {
+  padding: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#theme-button {
+  margin: 10px;
+  margin-right: 30px;
+  justify-self: center;
+}
+
+#new-game-button {
+  margin: 10px;
+  justify-self: center;
+}
+
+#save-game-button {
+  margin: 10px;
+  margin-left: 30px;
+  justify-self: center;
+}
+
+
+h1 {
+  font-size: 40pt;
+  margin-bottom: 0;
+}
+
+p#timer, p#lives {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+}
+
+#number-container > p {
+  border: 1px solid black;
+  border-radius: 20%;
+  width: 60px;
+  height: 60px;
+  font-size: 40pt;
+  margin-left: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+
+}
+
+#board {
+  padding-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  width: 600px;
+  height: 600px;
+  align-content: center;
+}
+
+.tile {
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  margin: 0px;
+  vertical-align: middle;
+  font-size: 40pt;
+}
+
+p.selected {
+  background-color: lightblue;
+}
+
+p.incorrect {
+  color: red;
+}
+
+.rightBorder {
+  border-right: 4px solid black;
+}
+
+.bottomBorder {
+  border-bottom: 4px solid black;
+}
