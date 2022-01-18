@@ -1,15 +1,7 @@
 import {useEffect} from 'react'
 import './App.css'
 
-function Stats({lives, setLives, disableSelected, clearPreviousBoard}) {
-
-    useEffect(() => {
-        disableSelected ? setLives(lives - 1) : setLives(lives)
-    }, [disableSelected])
-
-    useEffect(() => {
-        if (lives === 0) clearPreviousBoard()
-    })
+function Stats({lives}) {
 
     return (
         <div id="stats">

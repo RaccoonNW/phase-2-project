@@ -1,6 +1,6 @@
 import './App.css'
 
-function Buttons({theme, setTheme, generateBoard, setHidden, selectNum, clearPreviousBoard, extractSaveBoard, setLives, disableSelect}) {
+function Buttons({theme, setTheme, setLives, setStarted, setSavedGame, savedGame, updateSavedGame, postSavedGame}) {
 
     const buttonText = theme ? 'Light Mode' : 'Dark Mode'
     
@@ -11,15 +11,12 @@ function Buttons({theme, setTheme, generateBoard, setHidden, selectNum, clearPre
     }
 
     function startGame() {
-        clearPreviousBoard()
+        setStarted(true)
         setLives(3)
-        generateBoard()
-        setHidden()
-        selectNum()
     }
 
-    function saveGame() {
-        extractSaveBoard()
+    function handleSaveGame() {
+        postSavedGame()
     }
 
     return (
@@ -28,7 +25,7 @@ function Buttons({theme, setTheme, generateBoard, setHidden, selectNum, clearPre
                 {buttonText}
             </button>
             <button id="new-game-button" onClick={startGame}>Create New Game</button>
-            <button id="save-game-button" onClick={saveGame}>Save Game</button>
+            <button id="save-game-button" onClick={handleSaveGame}>Save Game</button>
         </div>
     )
 }

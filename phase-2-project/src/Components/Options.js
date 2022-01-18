@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-function Options({setDifficulty}) {
+function Options({setDifficulty, setStarted, setSavedGame}) {
 
     const [mode, setMode] = useState(null)
 
@@ -10,7 +10,11 @@ function Options({setDifficulty}) {
     
             fetch('http://localhost:3001/puzzles')
                 .then((r) => r.json())
-                .then((puzzles) => setDifficulty(puzzles[mode]))
+                .then((puzzles) => {
+                    setStarted(false)
+                    setDifficulty(puzzles[mode])
+                    setSavedGame(puzzles[mode].puzzle)
+                })
         }
     }, [mode])
 

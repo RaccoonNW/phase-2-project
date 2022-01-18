@@ -10,6 +10,7 @@
 
 # production
 /build
+junk.js
 
 # misc
 .DS_Store

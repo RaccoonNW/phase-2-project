@@ -1,14 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 
 
-function NumElement({id, number, setSelected, selected}) {
+function NumElement({id, number, setSelectedNumber, selectedNumber}) {
 
     function handleClick() {
-        setSelected(number)
+        if (selectedNumber !== number) {
+            setSelectedNumber(number)
+            
+        } else {
+            setSelectedNumber(null)
+        }
     }
 
     return (
-        <p id={id} onClick={handleClick} className={selected == number ? 'selected-state' : ""}>
+        <p id={id} onClick={handleClick} className={selectedNumber == number ? 'selected-state' : ""}>
             {number}
         </p>
     )
