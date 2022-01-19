@@ -1,6 +1,6 @@
 import './App.css'
 
-function Buttons({theme, setTheme, setLives, setStarted, setSavedGame, savedGame, updateSavedGame, postSavedGame}) {
+function Buttons({theme, setTheme, setLives, setStarted, setSavedGame, savedGame, updateSavedGame, postSavedGame, setTemporarySaveText}) {
 
     const buttonText = theme ? 'Light Mode' : 'Dark Mode'
     
@@ -17,6 +17,7 @@ function Buttons({theme, setTheme, setLives, setStarted, setSavedGame, savedGame
 
     function handleSaveGame() {
         postSavedGame()
+        setTemporarySaveText('This will eventually be a list of saved games to choose from')
     }
 
     return (

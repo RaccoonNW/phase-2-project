@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, } from 'react';
 import Header from './Header';
 import Game from './Game';
 import Options from './Options';
 import Buttons from './Buttons';
 import Stats from './Stats';
+import Welcome from './Welcome';
+import Saves from './Saves';
 import './App.css'
 import '../db.json'
+import {Route, Switch} from 'react-router-dom'
 
 function App() {
 
@@ -17,6 +20,8 @@ function App() {
   const [selectedTile, setSelectedTile] = useState()
   const [selectedNumber, setSelectedNumber] = useState()
   const [savedGame, setSavedGame] = useState('')
+  const [temporarySaveText, setTemporarySaveText] = useState()
+
 
   function updateSavedGame() {
     if (selectedTile !== undefined) {
@@ -51,43 +56,53 @@ function App() {
 
   return (
     <div>
-      <Header/>
-      <Options setDifficulty={setDifficulty} setStarted={setStarted} setSavedGame={setSavedGame}/>
-      <Buttons
-        setLives={setLives}  
-        theme={theme} setTheme={setTheme} 
-        setStarted={setStarted}
-        savedGame={savedGame}
-        setSavedGame={setSavedGame}
-        updateSavedGame={updateSavedGame}
-        postSavedGame={postSavedGame}
-      />
-      <Stats 
-        lives={lives} 
-        setLives={setLives}
-      />
-      <Game 
-        selectedNumber={selectedNumber} 
-        setSelectedNumber={setSelectedNumber}
-        difficulty={difficulty}
-        theme={theme}
-        selected={selected}
-        setSelected={setSelected}
-        difficulty={difficulty}
-        selectedTile={selectedTile}
-        setSelectedTile={setSelectedTile}
-        started={started}
-        lives={lives}
-        setLives={setLives}
-        savedGame={savedGame}
-        setSavedGame={setSavedGame}
-        updateSavedGame={updateSavedGame}
-      />
+      <Welcome/>
+      <Switch>
+        <Route exact path='/saves'>
+          <Saves temporarySaveText={temporarySaveText}/>
+        </Route>
+        <Route exact path='/game'>
+          <Header />
+          <Options setDifficulty={setDifficulty} setStarted={setStarted} setSavedGame={setSavedGame}/>
+          <Buttons
+            setLives={setLives}  
+            theme={theme} setTheme={setTheme} 
+            setStarted={setStarted}
+            savedGame={savedGame}
+            setSavedGame={setSavedGame}
+            updateSavedGame={updateSavedGame}
+            postSavedGame={postSavedGame}
+            setTemporarySaveText={setTemporarySaveText}
+          />
+          <Stats 
+            lives={lives} 
+            setLives={setLives}
+          />
+          <Game 
+            selectedNumber={selectedNumber} 
+            setSelectedNumber={setSelectedNumber}
+            difficulty={difficulty}
+            theme={theme}
+            selected={selected}
+            setSelected={setSelected}
+            difficulty={difficulty}
+            selectedTile={selectedTile}
+            setSelectedTile={setSelectedTile}
+            started={started}
+            lives={lives}
+            setLives={setLives}
+            savedGame={savedGame}
+            setSavedGame={setSavedGame}
+            updateSavedGame={updateSavedGame}
+          />
+        </Route>
+      </Switch>
 
     </div>
   )
 
 }
+
 
 
 export default App;
